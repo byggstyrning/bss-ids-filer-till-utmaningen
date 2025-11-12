@@ -1,0 +1,205 @@
+<ids:ids xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://standards.buildingsmart.org/IDS http://standards.buildingsmart.org/IDS/1.0/ids.xsd" xmlns:ids="http://standards.buildingsmart.org/IDS">
+  <!--edited with usBIM.IDSeditor 2.3.16.0 (http://www.accasoftware.com)-->
+  <ids:info>
+    <ids:title>IDS UTMANING och TEST</ids:title>
+    <ids:copyright>INGEN Copyright</ids:copyright>
+    <ids:version>0.1</ids:version>
+    <ids:description>
+En IDS har tre delar:
+- En beskrivning av syftet med specifikationen -  
+- Tillämplighet: Väljer vad av modellen som man avser att specificera -
+- Krav: vilken information som krävs för delmängden som identifierats i tillämpligheten -
+
+Tillämplighet och krav beskrivs utifrån 6st IFC-aspekter:
+- Attribute - - Property - - Entity -
+- Classification - - Material - - PartOf - </ids:description>
+    <ids:author>openBIM@trafikverket.se</ids:author>
+    <ids:date>2025-07-01</ids:date>
+    <ids:purpose>Framtagen för att testa stöd för IDSens 6 aspekter</ids:purpose>
+    <ids:milestone>Ingår i BIM Alliance Branschutmaning 2025</ids:milestone>
+  </ids:info>
+  <ids:specifications>
+    <ids:specification ifcVersion="IFC4X3_ADD2" name="IfcProject" description="Tillämplighet: IFC klassen IfcProject&#xA; och IDS aspekt: Attribut" instructions="IfcProject MÅSTE finnas och ha ett namn och en beskrivning">
+      <ids:applicability minOccurs="1" maxOccurs="unbounded">
+        <ids:entity>
+          <ids:name>
+            <ids:simpleValue>IFCPROJECT</ids:simpleValue>
+          </ids:name>
+        </ids:entity>
+      </ids:applicability>
+      <ids:requirements>
+        <ids:attribute cardinality="required" instructions="Fylls i med projektets objektnummer">
+          <ids:name>
+            <ids:simpleValue>Name</ids:simpleValue>
+          </ids:name>
+          <ids:value>
+            <xs:restriction base="xs:string">
+              <xs:maxLength value="20" />
+            </xs:restriction>
+          </ids:value>
+        </ids:attribute>
+        <ids:attribute cardinality="required" instructions="Fylls i med projektets namn (exempelvis: E4 Förbifart Stockholm)">
+          <ids:name>
+            <ids:simpleValue>Description</ids:simpleValue>
+          </ids:name>
+          <ids:value>
+            <xs:restriction base="xs:string">
+              <xs:maxLength value="25" />
+            </xs:restriction>
+          </ids:value>
+        </ids:attribute>
+      </ids:requirements>
+    </ids:specification>
+    <ids:specification ifcVersion="IFC4X3_ADD2" name="IfcSite" description="Tillämplighet: IFC klassen IfcSite&#xA; och IDS aspekter: PartOf (del av) och Attribut" instructions="IfcSite MÅSTE finnas och vara en del av IfcProject och ha ett ID och namn">
+      <ids:applicability minOccurs="1" maxOccurs="unbounded">
+        <ids:entity>
+          <ids:name>
+            <ids:simpleValue>IFCSITE</ids:simpleValue>
+          </ids:name>
+        </ids:entity>
+      </ids:applicability>
+      <ids:requirements>
+        <ids:partOf relation="IFCRELAGGREGATES" cardinality="required">
+          <ids:entity>
+            <ids:name>
+              <ids:simpleValue>IFCPROJECT</ids:simpleValue>
+            </ids:name>
+          </ids:entity>
+        </ids:partOf>
+        <ids:attribute cardinality="required" instructions="Fylls i med identifikation för vald indelning (exempelvis: 2-2241).  &#xA;&#xA;IfcSite kan användas för exempelvis Anläggningsnummer enligt BATMAN, Entreprenad, Delområde, Bandel eller annan lämplig geografisk indelning">
+          <ids:name>
+            <ids:simpleValue>Name</ids:simpleValue>
+          </ids:name>
+        </ids:attribute>
+        <ids:attribute cardinality="required" instructions="Fylls i med namnet på vald indelning (exempelvis: Bro över Knistavägen i tpl Häggvik å väg 265)">
+          <ids:name>
+            <ids:simpleValue>Description</ids:simpleValue>
+          </ids:name>
+        </ids:attribute>
+      </ids:requirements>
+    </ids:specification>
+    <ids:specification ifcVersion="IFC4X3_ADD2" name="IfcBridge" description="Tillämplighet: IFC klassen IfcBridge&#xA; och IDS aspekter: PartOf (del av) och Attribut" instructions="IfcBridge MÅSTE finnas, vara en del av IfcSite och ha ett ID och namn">
+      <ids:applicability minOccurs="1" maxOccurs="unbounded">
+        <ids:entity>
+          <ids:name>
+            <ids:simpleValue>IFCBRIDGE</ids:simpleValue>
+          </ids:name>
+        </ids:entity>
+      </ids:applicability>
+      <ids:requirements>
+        <ids:partOf relation="IFCRELAGGREGATES" cardinality="required">
+          <ids:entity>
+            <ids:name>
+              <ids:simpleValue>IFCSITE</ids:simpleValue>
+            </ids:name>
+          </ids:entity>
+        </ids:partOf>
+        <ids:attribute cardinality="required" instructions="Identifiering av bron enligt projektets Anläggningsdelar, Konstruktionsnummer eller liknande">
+          <ids:name>
+            <ids:simpleValue>Name</ids:simpleValue>
+          </ids:name>
+        </ids:attribute>
+        <ids:attribute cardinality="required" instructions="Fylls i med namnet på vald indelning (exempelvis: Bro (64G) över Knistavägen i tpl Häggvik å väg 265)">
+          <ids:name>
+            <ids:simpleValue>Description</ids:simpleValue>
+          </ids:name>
+        </ids:attribute>
+      </ids:requirements>
+    </ids:specification>
+    <ids:specification ifcVersion="IFC4X3_ADD2" name="IfcBridgePart" description="Tillämplighet: IFC klassen IfcBridgePart med fördefinierad typ&#xA; och IDS aspekter: PartOf (del av) och Attribut" instructions="IfcBridgePart MÅSTE finnas, vara en del av IfcBridge, ha en fördefinierad typ och ett namn">
+      <ids:applicability minOccurs="1" maxOccurs="unbounded">
+        <ids:entity>
+          <ids:name>
+            <ids:simpleValue>IFCBRIDGEPART</ids:simpleValue>
+          </ids:name>
+          <ids:predefinedType>
+            <ids:simpleValue>FOUNDATION</ids:simpleValue>
+          </ids:predefinedType>
+        </ids:entity>
+      </ids:applicability>
+      <ids:requirements>
+        <ids:partOf relation="IFCRELAGGREGATES" cardinality="required" instructions="IfcBridgePart med typ foundation ska vara en del av IfcBridge">
+          <ids:entity>
+            <ids:name>
+              <ids:simpleValue>IFCBRIDGE</ids:simpleValue>
+            </ids:name>
+          </ids:entity>
+        </ids:partOf>
+        <ids:attribute cardinality="required" instructions="Attributet Name ska finnas med bestämt värde på Svenska">
+          <ids:name>
+            <ids:simpleValue>Name</ids:simpleValue>
+          </ids:name>
+          <ids:value>
+            <ids:simpleValue>Grundläggning</ids:simpleValue>
+          </ids:value>
+        </ids:attribute>
+      </ids:requirements>
+    </ids:specification>
+    <ids:specification ifcVersion="IFC4X3_ADD2" name="Bottenplatta" description="Tillämplighet: IFC klassen IfcFooting med fördefinierad typ&#xA; och IDS aspekter: PartOf (de av), Attribut, Egenskap, Material och Klassifikation" instructions="Bottenplatta MÅSTE finnas med Fördefinierad typ, Namn, Egenskap, Material och minst 1 Klassifikationskod men gärna 2, samt vara en del av IfcBridgePart.FOUNDATION">
+      <ids:applicability minOccurs="1" maxOccurs="unbounded">
+        <ids:entity>
+          <ids:name>
+            <ids:simpleValue>IFCFOOTING</ids:simpleValue>
+          </ids:name>
+          <ids:predefinedType>
+            <ids:simpleValue>PAD_FOOTING</ids:simpleValue>
+          </ids:predefinedType>
+        </ids:entity>
+      </ids:applicability>
+      <ids:requirements>
+        <ids:partOf relation="IFCRELCONTAINEDINSPATIALSTRUCTURE" cardinality="required" instructions="Bottenplatta SKA vara en del av IfcBridgePart med fördefinierad typ Foundation">
+          <ids:entity>
+            <ids:name>
+              <ids:simpleValue>IFCBRIDGEPART</ids:simpleValue>
+            </ids:name>
+            <ids:predefinedType>
+              <ids:simpleValue>FOUNDATION</ids:simpleValue>
+            </ids:predefinedType>
+          </ids:entity>
+        </ids:partOf>
+        <ids:classification cardinality="required" instructions="IfcClassification för Produktionsresultat enligt CoClass: EBE.111 Betonggjutning Kategori A vid nybyggnad av bro">
+          <ids:value>
+            <ids:simpleValue>EBE.111</ids:simpleValue>
+          </ids:value>
+          <ids:system>
+            <ids:simpleValue>CoClass PR</ids:simpleValue>
+          </ids:system>
+        </ids:classification>
+        <ids:classification cardinality="optional" instructions="IfcClassification Enligt Elementkod i gällande krav för  E4FS byggprojekteringsuppdrag, 12CD-- Bottenplatta">
+          <ids:value>
+            <ids:simpleValue>12CD--</ids:simpleValue>
+          </ids:value>
+          <ids:system>
+            <ids:simpleValue>BSAB96_E4FS-SB11</ids:simpleValue>
+          </ids:system>
+        </ids:classification>
+        <ids:attribute cardinality="required" instructions="Attributet Namn ska finnas med bestämt värde på Svenska">
+          <ids:name>
+            <ids:simpleValue>Name</ids:simpleValue>
+          </ids:name>
+          <ids:value>
+            <ids:simpleValue>Bottenplatta</ids:simpleValue>
+          </ids:value>
+        </ids:attribute>
+        <ids:property dataType="IFCLABEL" cardinality="required" instructions="IFC Egenskapen StrengthClass i Pset_ConcreteElementGeneral ska finnas med värde enligt C, 2 siffror, /, 2 siffror (exempel: C35/45)">
+          <ids:propertySet>
+            <ids:simpleValue>Pset_ConcreteElementGeneral</ids:simpleValue>
+          </ids:propertySet>
+          <ids:baseName>
+            <ids:simpleValue>StrengthClass</ids:simpleValue>
+          </ids:baseName>
+          <ids:value>
+            <xs:restriction base="xs:string">
+              <xs:pattern value="C[0-9]{2}/[0-9]{2}" />
+            </xs:restriction>
+          </ids:value>
+        </ids:property>
+        <ids:material cardinality="required" instructions="IfcMaterial ska vara ifyllt med Name/Materialet Betong">
+          <ids:value>
+            <ids:simpleValue>Betong</ids:simpleValue>
+          </ids:value>
+        </ids:material>
+      </ids:requirements>
+    </ids:specification>
+  </ids:specifications>
+</ids:ids>

@@ -1,0 +1,56 @@
+<ids:ids xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://standards.buildingsmart.org/IDS http://standards.buildingsmart.org/IDS/1.0/ids.xsd" xmlns:ids="http://standards.buildingsmart.org/IDS">
+  <!--edited with usBIM.IDSeditor 2.3.4.0 (http://www.accasoftware.com)-->
+  <ids:info>
+    <ids:title>Kontroll av koordinatsystem</ids:title>
+    <ids:version>0.1 för översyn</ids:version>
+    <ids:author>openBIM@trafikverket.se</ids:author>
+    <ids:date>2025-03-05</ids:date>
+    <ids:purpose>Enligt TDOK 2012:35 Digital projekthantering, kap5.1 Allmänna projekteringskrav</ids:purpose>
+    <ids:milestone>Gäller för samtliga skeden</ids:milestone>
+  </ids:info>
+  <ids:specifications>
+    <ids:specification ifcVersion="IFC4X3_ADD2" name="Koordinatsystem (Stockholm)" description="IfcProjectedCRS är ett koordinatreferenssystem (CRS) som anger det lokala (ex Stockholm) tekniska koordinatsystemet som anläggningsprojektet relaterar till." instructions="EPSG kod anges med 3D koordinatsystem för resp Sweref99 XX XX + RH2000  &#xA;Något av följande: EPSG:5846, 5847, 5848, 5849, 5850, 5851, 5852, 5853, 5854, 5855, 5856, 5857.&#xA;Länk till EPSG (sök på RH2000) https://epsg.io/&#xA;Länk till Lantmäteriet Sweref99 Lokala projektionszoner (12st) &#xA;https://www.lantmateriet.se/sv/geodata/gps-geodesi-och-swepos/Referenssystem/Tvadimensionella-system/SWEREF-99-projektioner/#anchor-0">
+      <ids:applicability minOccurs="1" maxOccurs="unbounded">
+        <ids:entity>
+          <ids:name>
+            <ids:simpleValue>IFCPROJECTEDCRS</ids:simpleValue>
+          </ids:name>
+        </ids:entity>
+      </ids:applicability>
+      <ids:requirements>
+        <ids:attribute cardinality="required" instructions="Anges med EPSG kod för kombinerad Plan och höjdsystem. &#xA;Beroende på nationell projektionszon 5847, 5848, 5849, 5850, 5851, 5852, 5853, 5854, 5855, 5856, 5857">
+          <ids:name>
+            <ids:simpleValue>Name</ids:simpleValue>
+          </ids:name>
+          <ids:value>
+            <ids:simpleValue>EPSG:5850</ids:simpleValue>
+          </ids:value>
+        </ids:attribute>
+        <ids:attribute cardinality="required" instructions="Beskrivning av detta koordinatreferenssystem">
+          <ids:name>
+            <ids:simpleValue>Description</ids:simpleValue>
+          </ids:name>
+          <ids:value>
+            <ids:simpleValue>Kombinerat Sweref99 18 00 och RH2000</ids:simpleValue>
+          </ids:value>
+        </ids:attribute>
+        <ids:attribute cardinality="required" instructions="Datum enligt Lantmäteriet">
+          <ids:name>
+            <ids:simpleValue>GeodeticDatum</ids:simpleValue>
+          </ids:name>
+          <ids:value>
+            <ids:simpleValue>SWEREF99</ids:simpleValue>
+          </ids:value>
+        </ids:attribute>
+        <ids:attribute cardinality="optional" instructions="Används undantagsvis om EPSG kod för plan angivits. Exempelvis om projektet använt höjdsystem RH00.">
+          <ids:name>
+            <ids:simpleValue>VerticalDatum</ids:simpleValue>
+          </ids:name>
+          <ids:value>
+            <ids:simpleValue>RH00</ids:simpleValue>
+          </ids:value>
+        </ids:attribute>
+      </ids:requirements>
+    </ids:specification>
+  </ids:specifications>
+</ids:ids>
