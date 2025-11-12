@@ -1,0 +1,3 @@
+[submodule "revit-ifc"]
+	path = revit-ifc
+	url = https://github.com/byggstyrning/revit-ifc-trv.git
