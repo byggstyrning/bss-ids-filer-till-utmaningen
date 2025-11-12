@@ -12,12 +12,14 @@ Detta projekt har genomfört modifieringar av Revits IFC Export-plugin för att 
 - ✅ **Löst:** PropertySet-definitioner har skapats och konfigurerats för korrekt export
 - ✅ **Löst:** Spatial containment (PartOf) har implementerats för IfcBridgePart-relationer
 - ✅ **Löst:** PredefinedType-support har lagts till för IfcBridgePart
+<img width="2315" height="1392" alt="Blender IDS Validation Results" src="https://github.com/user-attachments/assets/8941833d-48d5-469e-85d3-0b940d8128f4" />
 
 **BuildingSMART-validering:**
 - ✅ **Löst:** Invalid handle exceptions har fixats i transform-beräkningar
 - ✅ **Löst:** Null-hantering har implementerats för PredefinedType-attribut
 - ✅ **Löst:** Revit 2026 API-kompatibilitet har säkerställts
 - ⚠️ **Känt begränsning:** OJT001-regeln kan inte uppfyllas på grund av Revit-arkitektur-begränsningar (se detaljer nedan)
+<img width="843" height="146" alt="BuildingSMART Validation Service Results" src="https://github.com/user-attachments/assets/1fa32d90-778b-4914-b48a-c15eb7b07415" />
 
 ### Tekniska lösningar
 
